@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#789875">
+<title>Your experience | mindmaid</title>
+<style>
+:root{--sky:#dceff5;--sage:#a8bfa3;--green:#557653;--deep:#3f6048;--beige:#dccbb5;--lav:#e5dcf0;--pink:#f2dce0;--cream:#fbf9f4;--soft:#eee5d9;--peach:#f7e2d3;--ink:#35443a;--muted:#788078;--white:#fffefa;--shadow:0 15px 42px rgba(65,83,66,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button,input,textarea{font:inherit}
+header{width:min(1120px,calc(100% - 32px));margin:18px auto;padding:12px 18px;background:#fffefaed;border:1px solid #55765318;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 8px 25px #4058430b}
+.brand{font-size:1.35rem;font-weight:750;letter-spacing:-.05em;display:flex;align-items:center;gap:9px}.mark{width:34px;height:34px;border-radius:12px;background:var(--sage);color:white;display:grid;place-items:center}
+nav{display:flex;gap:20px;font-size:.9rem;color:#647064}nav a:hover,.back:hover{color:var(--green)}
+main{width:min(1060px,calc(100% - 32px));margin:0 auto}
+.intro{text-align:center;padding:54px 12px 30px}.eyebrow{text-transform:uppercase;letter-spacing:.17em;font-size:.72rem;font-weight:750;color:var(--green)}h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:500;color:#405843;line-height:1.15}h1{font-size:clamp(2.5rem,6vw,4.1rem);letter-spacing:-.045em;margin:12px 0}h2{font-size:2rem;margin:0 0 12px}h3{font-size:1.45rem;margin:0 0 8px}.intro p{color:var(--muted);max-width:680px;margin:0 auto}
+.choose-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin:24px 0 52px}.choose{border:1px solid #40584312;border-radius:21px;padding:22px;text-align:left;cursor:pointer;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;transition:.2s;background:white;color:var(--ink)}.choose:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.choose[aria-pressed=true]{outline:2px solid var(--green);outline-offset:2px}.choose:nth-child(1){background:var(--sky)}.choose:nth-child(2){background:var(--lav)}.choose:nth-child(3){background:var(--peach)}.choose:nth-child(4){background:#e3eddf}.choose:nth-child(5){background:var(--pink)}.choose:nth-child(6){background:var(--soft)}.emoji{font-size:1.6rem}.choose strong{display:block;font:500 1.4rem Georgia,serif;color:#405843;margin-top:10px}.choose small{color:#68756b;font-size:.88rem}
+.journey{display:none;background:var(--white);border:1px solid #5576531b;border-radius:26px;padding:clamp(22px,4vw,42px);box-shadow:var(--shadow);margin:0 0 48px}.journey.active{display:block;animation:appear .35s ease}@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.journey-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:24px}.journey-head .emoji{width:54px;height:54px;border-radius:17px;background:#edf3e9;display:grid;place-items:center;flex-shrink:0}.journey-head p{margin:0;color:var(--muted)}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}.step{border-radius:17px;padding:18px;background:#f7f7f1;border:1px solid #55765312}.step .num{font-size:.75rem;font-weight:800;color:var(--green);letter-spacing:.1em}.step h3{font-size:1.18rem;margin:5px 0}.step p{font-size:.92rem;color:#68756b;margin:0 0 9px}.prompt{background:linear-gradient(110deg,#e5dcf0,#f4e3e4,#f7e2d3);padding:20px;border-radius:18px;margin-top:18px}.prompt b{display:block;color:#557653;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}.prompt p{font:italic 1.25rem Georgia,serif;margin:7px 0 0;color:#555f55}
+.reflection{margin-top:18px}.reflection label{display:block;font-weight:650;margin-bottom:8px}.reflection textarea{width:100%;min-height:110px;border:1px solid #dce3d8;border-radius:14px;padding:13px;background:#fffefa;resize:vertical;color:var(--ink)}.reflection textarea:focus{outline:2px solid #a8bfa3}.save{margin-top:10px;border:0;border-radius:999px;background:var(--green);color:white;padding:10px 18px;font-weight:650;cursor:pointer}.save:hover{background:var(--deep)}.saved{color:var(--green);font-size:.88rem;min-height:22px}
+.bottom-note{background:#e8eee4;border-radius:22px;padding:25px;text-align:center;margin:40px 0 70px}.bottom-note p{margin:6px 0;color:#68756b}footer{text-align:center;background:#e9eee5;color:#667266;padding:30px 18px;font-size:.86rem}footer p{max-width:740px;margin:8px auto}
+@media(max-width:700px){nav{gap:10px;font-size:.78rem}.choose-grid{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.intro{padding-top:38px}}
+@media(max-width:430px){header{align-items:flex-start;flex-direction:column}nav{width:100%;justify-content:space-between;flex-wrap:wrap}.choose{min-height:145px;padding:17px}.choose strong{font-size:1.2rem}}
+</style>
+</head>
+<body>
+<header>
+ <a class="brand" href="index.html"><span class="mark">m</span>mindmaid</a>
+ <nav aria-label="Main navigation"><a href="index.html">Home</a><a href="journal.html">Journal</a><a href="calm.html">Find your calm</a></nav>
+</header>
+<main>
+ <section class="intro">
+  <div class="eyebrow">Your experience</div>
+  <h1>What has today been feeling like?</h1>
+  <p>Choose the space that feels closest. You don't have to explain everything at once. Take your time — we can begin with just one small step.</p>
+ </section>
+ <section class="choose-grid" aria-label="Choose how you are feeling">
+  <button class="choose" data-target="homesick" aria-pressed="false"><span class="emoji">🏡</span><span><strong>Homesick</strong><small>For the people, places and little things you miss.</small></span></button>
+  <button class="choose" data-target="lonely" aria-pressed="false"><span class="emoji">☁️</span><span><strong>Lonely</strong><small>When you could use a little connection.</small></span></button>
+  <button class="choose" data-target="stressed" aria-pressed="false"><span class="emoji">🍃</span><span><strong>Stressed</strong><small>When everything feels like too much.</small></span></button>
+  <button class="choose" data-target="overthinking" aria-pressed="false"><span class="emoji">🫧</span><span><strong>Overthinking</strong><small>When your thoughts keep going in circles.</small></span></button>
+  <button class="choose" data-target="heartbroken" aria-pressed="false"><span class="emoji">🩷</span><span><strong>Heartbroken</strong><small>When something hurts and needs tenderness.</small></span></button>
+  <button class="choose" data-target="unsure" aria-pressed="false"><span class="emoji">🌷</span><span><strong>Not sure</strong><small>When you don't quite have the words yet.</small></span></button>
+ </section>
+
+ <section class="journey" id="homesick">
+  <div class="journey-head"><span class="emoji">🏡</span><div><h2>A little piece of home</h2><p>Missing home can show up in unexpected ways. It makes sense to miss what feels familiar.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · NOTICE</span><h3>Name what you miss</h3><p>Is it a person, a smell, a favourite meal, a familiar route, a sound, or a daily routine? You can miss more than one thing.</p></article>
+   <article class="step"><span class="num">02 · REFLECT</span><h3>Take a short visit home</h3><p>Close your eyes if comfortable. Picture a place that feels like home. Notice one detail — the light, a sound, or a familiar smell. Stay with that memory for a few breaths.</p></article>
+   <article class="step"><span class="num">03 · BRING HOME CLOSER</span><h3>Make a small piece of home</h3><p>Call someone, make a familiar meal, play a favourite playlist, or keep a comforting object nearby.</p></article>
+   <article class="step"><span class="num">04 · BE PATIENT</span><h3>Let belonging take its time</h3><p>Homesickness is common, and it often eases as new routines and connections grow. You can miss home and still begin to like where you are.</p></article>
+  </div>
+  <div class="prompt"><b>A gentle prompt</b><p>“What's one thing here I'm starting to like?”</p></div>
+  <div class="reflection"><label for="homeNote">Would you like to write a little about it?</label><textarea id="homeNote" placeholder="A person, place, memory, or something new you're beginning to enjoy..."></textarea><button class="save" data-save="homeNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="journey" id="lonely">
+  <div class="journey-head"><span class="emoji">☁️</span><div><h2>You deserve connection</h2><p>Loneliness is a human feeling, not a flaw. It doesn't mean there is anything wrong with you.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · REMEMBER</span><h3>You're not the only one</h3><p>Many people feel lonely sometimes, even when others are around. You don't need to judge yourself for it.</p></article>
+   <article class="step"><span class="num">02 · ONE SMALL STEP</span><h3>Send a simple message</h3><p>You could text someone, “Hey, I was thinking of you. How are you?” It doesn't have to become a big conversation.</p></article>
+   <article class="step"><span class="num">03 · LOW-PRESSURE COMPANY</span><h3>Be around people gently</h3><p>Try a library, club, class, shared meal, park, or a familiar public place. You don't have to talk the whole time.</p></article>
+   <article class="step"><span class="num">04 · SELF-COMPASSION</span><h3>Speak to yourself kindly</h3><p>Place a hand somewhere comfortable and try: “This is a hard moment. I deserve care and connection, just like anyone else.”</p></article>
+  </div>
+  <div class="prompt"><b>A gentle prompt</b><p>“Who made me feel seen recently?”</p></div>
+  <div class="reflection"><label for="lonelyNote">Would you like to write about that person or moment?</label><textarea id="lonelyNote" placeholder="Write whatever comes to mind..."></textarea><button class="save" data-save="lonelyNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="journey" id="stressed">
+  <div class="journey-head"><span class="emoji">🍃</span><div><h2>Let's make things feel a little smaller</h2><p>You don't have to solve everything at once. Let's slow the moment down.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · RESET</span><h3>One-minute breathing pause</h3><p>Let your shoulders soften. Breathe in gently for 4 counts and out for 6. Repeat at a comfortable pace; return to normal breathing if it feels uncomfortable.</p></article>
+   <article class="step"><span class="num">02 · UNLOAD</span><h3>Brain dump</h3><p>Write down everything on your mind. It can be messy, unfinished and out of order. You don't need to fix any of it yet.</p></article>
+   <article class="step"><span class="num">03 · SORT</span><h3>What can I influence?</h3><p>Separate the list into “can control” and “can't control”. Put your energy toward what is within your reach, and let the rest wait for now.</p></article>
+   <article class="step"><span class="num">04 · BEGIN SMALL</span><h3>Choose one next step</h3><p>Pick one manageable action. Make it small enough to begin in five minutes or less.</p></article>
+  </div>
+  <div class="prompt"><b>A kind reminder</b><p>Rest if you can. Have some water. Step away for a moment. You are allowed to pause.</p></div>
+  <div class="reflection"><label for="stressNote">Brain dump — what's taking up space in your mind?</label><textarea id="stressNote" placeholder="Let it all out here. No need to organise it yet..."></textarea><button class="save" data-save="stressNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="journey" id="overthinking">
+  <div class="journey-head"><span class="emoji">🫧</span><div><h2>You are having a thought — not a certainty</h2><p>Thoughts can feel loud. We can notice them without having to follow every one.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · LABEL</span><h3>Create a little distance</h3><p>Try saying: “I'm having the thought that…” This can help you notice a thought as a thought, rather than a fact.</p></article>
+   <article class="step"><span class="num">02 · UNLOOP</span><h3>Write the loop down</h3><p>Put the repeating thought on paper or in the space below. You don't have to solve it while writing.</p></article>
+   <article class="step"><span class="num">03 · GROUND</span><h3>Return to this moment</h3><p>Name 5 things you see, 4 things you can feel, 3 things you hear, 2 things you smell, and 1 thing you taste. Skip any sense that isn't comfortable or available.</p></article>
+   <article class="step"><span class="num">04 · CHOOSE</span><h3>Solve or release?</h3><p>Ask: “Is this a problem I can take a step toward solving, or a worry I can practise releasing for now?”</p></article>
+  </div>
+  <div class="prompt"><b>Try a gentle boundary</b><p>Set aside up to 10 minutes to write about the worry. When the time is up, choose one grounding or everyday activity to return to.</p></div>
+  <div class="reflection"><label for="thoughtNote">“I'm having the thought that…”</label><textarea id="thoughtNote" placeholder="Write the thought loop here, just as it is..."></textarea><button class="save" data-save="thoughtNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="journey" id="heartbroken">
+  <div class="journey-head"><span class="emoji">🩷</span><div><h2>Give yourself room to feel</h2><p>Loss and heartbreak can bring real grief. You don't have to rush yourself through it.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · VALIDATE</span><h3>Your feelings matter</h3><p>It is okay if this hurts, takes time, or comes in waves. There is no timetable you have to follow.</p></article>
+   <article class="step"><span class="num">02 · EXPRESS</span><h3>Write an unsent letter</h3><p>Write what you wish you could say. This letter is for your own reflection; you do not have to send it.</p></article>
+   <article class="step"><span class="num">03 · TODAY ONLY</span><h3>Choose gentle self-care</h3><p>Pick one caring action for today: eat something, rest, step outside, listen to a comforting song, or do one familiar routine.</p></article>
+   <article class="step"><span class="num">04 · DON'T CARRY IT ALONE</span><h3>Lean on someone you trust</h3><p>Consider telling a trusted friend, family member, counsellor or another supportive adult how things have been feeling.</p></article>
+  </div>
+  <div class="prompt"><b>A gentle reminder</b><p>If the pain feels too heavy to manage alone, you deserve support. Reach out to someone you trust or a qualified professional. If you feel unsafe, contact local emergency services or a trusted adult right away.</p></div>
+  <div class="reflection"><label for="letterNote">A letter you don't have to send</label><textarea id="letterNote" placeholder="Start anywhere. You can stop whenever you need..."></textarea><button class="save" data-save="letterNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="journey" id="unsure">
+  <div class="journey-head"><span class="emoji">🌷</span><div><h2>It's okay not to know yet</h2><p>You don't need the perfect word. We can explore gently, one question at a time.</p></div></div>
+  <div class="steps">
+   <article class="step"><span class="num">01 · PERMISSION</span><h3>No label needed</h3><p>You are allowed to feel unsure. You can simply begin with “something is going on, and I'm still figuring it out.”</p></article>
+   <article class="step"><span class="num">02 · FIND A WORD</span><h3>Try a feelings check-in</h3><p>Could it be sadness, worry, anger, relief, excitement, tiredness, or a mix? You can choose more than one — or none.</p></article>
+   <article class="step"><span class="num">03 · BODY CHECK-IN</span><h3>Notice without judging</h3><p>Ask: “Where do I notice this feeling in my body?” You can simply notice warmth, tightness, lightness, energy, or nothing in particular. You don't need to change it.</p></article>
+   <article class="step"><span class="num">04 · WRITE FREELY</span><h3>Two minutes, no rules</h3><p>Write whatever comes to mind for two minutes. It doesn't need to make sense or be shared with anyone.</p></article>
+  </div>
+  <div class="prompt"><b>Where could you go next?</b><p>If a feeling becomes clearer, choose the journey that seems closest. You can change your mind whenever you like.</p></div>
+  <div class="reflection"><label for="unsureNote">A two-minute free-write</label><textarea id="unsureNote" placeholder="No rules. Start with one word, or just keep writing..."></textarea><button class="save" data-save="unsureNote">Save reflection on this device</button><div class="saved" aria-live="polite"></div></div>
+ </section>
+
+ <section class="bottom-note"><h2>One small step is enough</h2><p>You can return to these reflections whenever you need. Be gentle with yourself along the way.</p><p><a href="index.html" style="font-weight:700;color:#557653">← Back to mindmaid home</a></p></section>
+</main>
+<footer><b>mindmaid</b><p>Your reflections on this page are saved only in this browser when you choose to save them. This is a simple local prototype, not an encrypted journal or secure account.</p><p>mindmaid supports wellbeing but is not a replacement for professional help. If you feel unsafe, contact local emergency services or someone you trust.</p></footer>
+<script>
+const cards=document.querySelectorAll('.choose');
+const journeys=document.querySelectorAll('.journey');
+cards.forEach(card=>card.addEventListener('click',()=>{
+ const target=card.dataset.target;
+ cards.forEach(c=>c.setAttribute('aria-pressed',String(c===card)));
+ journeys.forEach(j=>j.classList.toggle('active',j.id===target));
+ document.getElementById(target).scrollIntoView({behavior:'smooth',block:'start'});
+}));
+document.querySelectorAll('[data-save]').forEach(button=>button.addEventListener('click',()=>{
+ const field=document.getElementById(button.dataset.save);
+ const output=button.nextElementSibling;
+ const value=field.value.trim();
+ if(!value){output.textContent="Write anything you'd like to keep first. There's no rush.";return;}
+ try{
+  const key='mindmaid-reflection-'+button.dataset.save;
+  localStorage.setItem(key,JSON.stringify({text:value,savedAt:new Date().toISOString()}));
+  output.textContent='Saved in this browser on this device. Take a moment to appreciate that you showed up for yourself.';
+ }catch(e){output.textContent='This browser could not save the reflection. You may want to copy it somewhere private.';}
+}));
+</script>
+</body>
+</html>
