@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#789875">
+  <meta name="description" content="mindmaid — a gentle space to check in, breathe, reflect and feel understood.">
+  <title>mindmaid — a little space for you</title>
+  <style>
+    :root {
+      --sky: #dceff5;
+      --sage: #a8bfa3;
+      --sage-dark: #557653;
+      --sage-deep: #3f6048;
+      --beige: #dccbb5;
+      --lavender: #e5dcf0;
+      --pink: #f2dce0;
+      --cream: #fbf9f4;
+      --soft-beige: #eee5d9;
+      --peach: #f7e2d3;
+      --ink: #35443a;
+      --muted: #788078;
+      --white: #fffefa;
+      --shadow: 0 18px 55px rgba(65, 83, 66, .10);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .site-header {
+      width: min(1180px, calc(100% - 40px));
+      margin: 20px auto 0;
+      padding: 13px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(255, 254, 250, .88);
+      border: 1px solid rgba(85, 118, 83, .10);
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(60, 80, 62, .05);
+      position: relative;
+      z-index: 5;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 750; font-size: 1.35rem; letter-spacing: -.05em; }
+    .brand-mark {
+      width: 36px; height: 36px; display: grid; place-items: center;
+      border-radius: 12px; background: var(--sage); color: white; font-size: 1.15rem;
+    }
+    .nav { display: flex; align-items: center; gap: 22px; color: #647064; font-size: .9rem; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--sage-deep); }
+    .nav-cta, .button {
+      border: 0; border-radius: 999px; padding: 11px 19px;
+      background: var(--sage-dark); color: white; font-weight: 650; cursor: pointer;
+      box-shadow: 0 7px 18px rgba(85, 118, 83, .17);
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+    }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); background: var(--sage-deep); box-shadow: 0 10px 22px rgba(85, 118, 83, .22); }
+    .menu-button { display: none; border: 0; background: var(--soft-beige); border-radius: 12px; padding: 9px 12px; color: var(--ink); cursor: pointer; }
+    .hero-wrap {
+      width: min(1180px, calc(100% - 40px)); margin: 22px auto 0;
+      min-height: 570px; border-radius: 30px; overflow: hidden; position: relative;
+      background:
+        radial-gradient(circle at 78% 28%, rgba(255,255,255,.68), transparent 24%),
+        radial-gradient(circle at 85% 80%, rgba(220,239,245,.8), transparent 28%),
+        linear-gradient(115deg, #6e956c 0%, #91ae8a 50%, #c7d9c1 100%);
+      box-shadow: var(--shadow);
+      display: flex; align-items: center;
+    }
+    .hero-wrap::before, .hero-wrap::after {
+      content: ""; position: absolute; border-radius: 50%; filter: blur(1px); pointer-events: none;
+    }
+    .hero-wrap::before { width: 390px; height: 390px; right: 5%; top: 8%; border: 1px solid rgba(255,255,255,.28); box-shadow: 0 0 0 28px rgba(255,255,255,.05), 0 0 0 58px rgba(255,255,255,.035); }
+    .hero-wrap::after { width: 230px; height: 230px; right: 13%; bottom: -95px; background: rgba(255,255,255,.12); }
+    .hero-content { position: relative; z-index: 1; max-width: 650px; padding: 78px 7%; color: white; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: .72rem; font-weight: 750; opacity: .86; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 6.5vw, 5.6rem); line-height: .99; letter-spacing: -.055em; font-weight: 500; margin: 18px 0 22px; }
+    .hero-content p { max-width: 510px; font-size: 1.1rem; color: rgba(255,255,255,.91); margin: 0 0 30px; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .button-light { background: var(--white); color: var(--sage-deep); box-shadow: none; }
+    .button-light:hover { background: #f1f5ed; color: var(--sage-deep); }
+    .text-link { padding: 10px 14px; color: white; font-weight: 600; }
+    .hero-note { margin-top: 48px; font-family: Georgia, serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,.82); }
+    .section { width: min(1080px, calc(100% - 40px)); margin: 88px auto; }
+    .section-heading { text-align: center; max-width: 660px; margin: 0 auto 32px; }
+    .section-heading .eyebrow { color: var(--sage-dark); }
+    h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.1; margin: 10px 0 12px; color: #405843; }
+    .section-heading p { color: var(--muted); margin: 0; }
+    .mood-panel {
+      background: var(--white); border: 1px solid rgba(85,118,83,.10); border-radius: var(--radius);
+      padding: clamp(24px, 5vw, 48px); box-shadow: var(--shadow); text-align: center;
+    }
+    .mood-options { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin: 28px 0 24px; }
+    .mood-option {
+      border: 1px solid transparent; background: #f2f7f8; color: #46564b; border-radius: 16px;
+      padding: 13px 18px; min-width: 145px; cursor: pointer; transition: .2s ease;
+    }
+    .mood-option span { font-size: 1.25rem; margin-right: 7px; }
+    .mood-option:hover { transform: translateY(-2px); border-color: #b8cdb4; }
+    .mood-option.selected { background: #e4eee1; border-color: var(--sage-dark); box-shadow: 0 0 0 3px rgba(168,191,163,.18); }
+    .mood-submit { min-width: min(100%, 300px); }
+    .mood-message { min-height: 26px; margin: 14px 0 0; color: var(--sage-dark); font-size: .93rem; }
+    .journey-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .journey-card {
+      min-height: 205px; border-radius: 22px; padding: 25px; display: flex; flex-direction: column;
+      justify-content: space-between; border: 1px solid rgba(70,90,70,.06); transition: transform .22s ease, box-shadow .22s ease;
+    }
+    .journey-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .journey-card:nth-child(1) { background: var(--sky); }
+    .journey-card:nth-child(2) { background: var(--lavender); }
+    .journey-card:nth-child(3) { background: var(--peach); }
+    .journey-card:nth-child(4) { background: #e3eddf; }
+    .journey-card:nth-child(5) { background: var(--pink); }
+    .journey-card:nth-child(6) { background: var(--soft-beige); }
+    .card-icon { font-size: 1.6rem; }
+    .journey-card h3 { margin: 13px 0 5px; font-family: Georgia, serif; font-size: 1.45rem; font-weight: 500; color: #405843; }
+    .journey-card p { margin: 0; color: #68756b; font-size: .92rem; }
+    .card-arrow { align-self: flex-end; font-size: 1.2rem; color: #557653; }
+    .tools-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .tool-card { background: var(--white); border: 1px solid rgba(85,118,83,.10); border-radius: 20px; padding: 23px; box-shadow: 0 8px 24px rgba(60,80,62,.045); }
+    .tool-card .card-icon { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 14px; background: #edf3e9; }
+    .tool-card h3 { margin: 17px 0 6px; color: #405843; font-family: Georgia, serif; font-weight: 500; font-size: 1.25rem; }
+    .tool-card p { margin: 0 0 16px; color: var(--muted); font-size: .88rem; }
+    .small-link { color: var(--sage-dark); font-weight: 700; font-size: .88rem; }
+    .quote-panel {
+      border-radius: 28px; padding: 48px 25px; text-align: center;
+      background: linear-gradient(120deg, #e5dcf0, #f4e3e4 55%, #f7e2d3);
+    }
+    .quote-panel p { font-family: Georgia, serif; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.3; max-width: 740px; margin: 0 auto 12px; color: #5b6259; }
+    .quote-panel span { color: #7b8279; font-size: .9rem; }
+    footer { margin-top: 90px; background: #e9eee5; padding: 35px 20px; text-align: center; color: #667266; }
+    footer .brand { justify-content: center; color: #405843; }
+    footer p { max-width: 720px; margin: 12px auto 0; font-size: .86rem; }
+    .care-note { margin-top: 10px; }
+    @media (max-width: 850px) {
+      .nav { gap: 13px; font-size: .82rem; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-wrap { min-height: 510px; }
+    }
+    @media (max-width: 650px) {
+      .site-header { width: calc(100% - 24px); margin-top: 12px; padding: 10px 12px; }
+      .menu-button { display: inline-block; }
+      .nav {
+        display: none; position: absolute; top: calc(100% + 9px); left: 0; right: 0; padding: 17px;
+        flex-direction: column; align-items: stretch; gap: 14px; background: var(--white);
+        border-radius: 16px; box-shadow: var(--shadow);
+      }
+      .nav.open { display: flex; }
+      .nav-cta { text-align: center; }
+      .hero-wrap { width: calc(100% - 24px); min-height: 500px; border-radius: 23px; }
+      .hero-content { padding: 58px 27px; }
+      .hero-content p { font-size: 1rem; }
+      .hero-wrap::before { width: 230px; height: 230px; right: -50px; top: 9%; }
+      .section { width: calc(100% - 28px); margin: 68px auto; }
+      .journey-grid { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+      .journey-card { min-height: 190px; padding: 18px; }
+      .journey-card h3 { font-size: 1.2rem; }
+      .journey-card p { font-size: .83rem; }
+      .tools-grid { gap: 11px; }
+      .tool-card { padding: 17px; }
+      .mood-option { min-width: 125px; flex: 1 1 40%; }
+    }
+    @media (max-width: 390px) {
+      .journey-grid, .tools-grid { grid-template-columns: 1fr; }
+      .journey-card { min-height: 155px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="mindmaid home">
+      <span class="brand-mark">m</span><span>mindmaid</span>
+    </a>
+    <button class="menu-button" id="menuButton" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav" id="mainNav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#check-in">Mood check-in</a>
+      <a href="#experiences">Your experiences</a>
+      <a href="#spaces">Explore</a>
+      <a class="nav-cta" href="#check-in">Take a moment ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-wrap" id="home">
+      <div class="hero-content">
+        <div class="eyebrow">A little space, just for you</div>
+        <h1>Come as you are.<br>Take a breath.</h1>
+        <p>Some days feel light. Some feel like a lot. Wherever you are today, you can begin here — gently, and at your own pace.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#check-in">Check in with yourself</a>
+          <a class="text-link" href="#experiences">Explore your space&nbsp; ↗</a>
+        </div>
+        <div class="hero-note">No pressure to have it all figured out.</div>
+      </div>
+    </section>
+
+    <section class="section" id="check-in">
+      <div class="section-heading">
+        <div class="eyebrow">A moment for you</div>
+        <h2>How are you feeling today?</h2>
+        <p>There is no right answer. Choose the feeling that feels closest — you can always change your mind.</p>
+      </div>
+      <div class="mood-panel">
+        <div class="mood-options" role="group" aria-label="Choose your mood">
+          <button class="mood-option" type="button" data-mood="Happy"><span>😊</span>Happy</button>
+          <button class="mood-option" type="button" data-mood="Neutral"><span>😐</span>Neutral</button>
+          <button class="mood-option" type="button" data-mood="Sad"><span>🌧️</span>Sad</button>
+          <button class="mood-option" type="button" data-mood="Stressed"><span>😣</span>Stressed</button>
+          <button class="mood-option" type="button" data-mood="Overwhelmed"><span>🌊</span>Overwhelmed</button>
+        </div>
+        <button class="button mood-submit" id="saveMood" type="button">Submit &amp; save</button>
+        <p class="mood-message" id="moodMessage" aria-live="polite">Choose a mood whenever you're ready.</p>
+      </div>
+    </section>
+
+    <section class="section" id="experiences">
+      <div class="section-heading">
+        <div class="eyebrow">Your experience</div>
+        <h2>What has today been feeling like?</h2>
+        <p>Choose a space that feels right for you. You don't have to explain everything at once.</p>
+      </div>
+      <div class="journey-grid">
+        <a class="journey-card" href="experiences.html#homesick">
+          <div><div class="card-icon">🏡</div><h3>Homesick</h3><p>A gentle place to reflect on missing home.</p></div><span class="card-arrow">↗</span>
+        </a>
+        <a class="journey-card" href="experiences.html#lonely">
+          <div><div class="card-icon">☁️</div><h3>Lonely</h3><p>Make room for connection, one small step at a time.</p></div><span class="card-arrow">↗</span>
+        </a>
+        <a class="journey-card" href="experiences.html#stressed">
+          <div><div class="card-icon">🍃</div><h3>Stressed</h3><p>Set things down and find a little clarity.</p></div><span class="card-arrow">↗</span>
+        </a>
+        <a class="journey-card" href="experiences.html#overthinking">
+          <div><div class="card-icon">🫧</div><h3>Overthinking</h3><p>Untangle racing thoughts gently.</p></div><span class="card-arrow">↗</span>
+        </a>
+        <a class="journey-card" href="experiences.html#heartbroken">
+          <div><div class="card-icon">🩷</div><h3>Heartbroken</h3><p>A compassionate space for difficult feelings.</p></div><span class="card-arrow">↗</span>
+        </a>
+        <a class="journey-card" href="experiences.html#not-sure">
+          <div><div class="card-icon">🌷</div><h3>Not sure</h3><p>Take your time finding words for what you feel.</p></div><span class="card-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="spaces">
+      <div class="section-heading">
+        <div class="eyebrow">Explore mindmaid</div>
+        <h2>Find the space you need</h2>
+        <p>Each part of mindmaid has its own place, so you can explore without feeling overwhelmed.</p>
+      </div>
+      <div class="tools-grid">
+        <article class="tool-card">
+          <div class="card-icon">📖</div><h3>Personal journal</h3>
+          <p>A private space to write freely, follow prompts and revisit your reflections.</p>
+          <a class="small-link" href="journal.html">Open journal ↗</a>
+        </article>
+        <article class="tool-card">
+          <div class="card-icon">🌿</div><h3>Find your calm</h3>
+          <p>Breathing, grounding and gentle resets for moments that feel like a lot.</p>
+          <a class="small-link" href="calm.html">Find calm ↗</a>
+        </article>
+        <article class="tool-card">
+          <div class="card-icon">✨</div><h3>Self-discovery studio</h3>
+          <p>Explore your values, strengths, thought patterns and personal growth.</p>
+          <a class="small-link" href="discovery.html">Discover yourself ↗</a>
+        </article>
+        <article class="tool-card">
+          <div class="card-icon">🤍</div><h3>When you need support</h3>
+          <p>Small, caring suggestions for overwhelmed or lonely moments.</p>
+          <a class="small-link" href="support.html">Explore support ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="quote-panel">
+        <p>“You don't have to figure everything out right now. One small moment of care is enough to begin.”</p>
+        <span>A gentle reminder from mindmaid</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand" href="index.html"><span class="brand-mark">m</span><span>mindmaid</span></a>
+    <p>Your entries are private and only visible to you. This starter homepage stores mood check-ins in this browser only; it does not provide account security or encrypted private journaling.</p>
+    <p class="care-note">mindmaid supports your wellbeing but is not a replacement for professional help. If you feel unsafe or need urgent support, contact your local emergency number or someone you trust.</p>
+    <p>Made with care · Take things one little step at a time.</p>
+  </footer>
+
+  <script>
+    const menuButton = document.getElementById("menuButton");
+    const mainNav = document.getElementById("mainNav");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "✕" : "☰";
+    });
+
+    mainNav.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    let selectedMood = "";
+    const moodButtons = document.querySelectorAll(".mood-option");
+    const moodMessage = document.getElementById("moodMessage");
+
+    moodButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        selectedMood = button.dataset.mood;
+        moodButtons.forEach(item => item.classList.toggle("selected", item === button));
+        moodMessage.textContent = `You've chosen ${selectedMood.toLowerCase()}. You can save it whenever you're ready.`;
+      });
+    });
+
+    document.getElementById("saveMood").addEventListener("click", () => {
+      if (!selectedMood) {
+        moodMessage.textContent = "Choose the feeling that fits best first. There's no rush.";
+        return;
+      }
+      const entry = { mood: selectedMood, date: new Date().toISOString() };
+      const saved = JSON.parse(localStorage.getItem("mindmaidMoodCheckins") || "[]");
+      saved.push(entry);
+      localStorage.setItem("mindmaidMoodCheckins", JSON.stringify(saved));
+      moodMessage.textContent = `Your ${selectedMood.toLowerCase()} check-in has been saved on this device. Thank you for checking in with yourself.`;
+    });
+  </script>
+</body>
+</html>
